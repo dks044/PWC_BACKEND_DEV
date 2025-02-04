@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -10,6 +11,7 @@ import { LeaseResponseDto } from './dto/LeaseResponseDto';
 import { UploadLeaseDTO } from './dto/UploadLease.DTO';
 import * as fs from 'fs';
 import * as path from 'path';
+import { mockLeaseUiil } from 'mock';
 
 @Controller('roboticLeaseApp')
 export class LeaseController {
@@ -110,5 +112,15 @@ export class LeaseController {
     });
 
     return { message: '계약서가 성공적으로 저장되었습니다.', filePath };
+  }
+
+  @Get('contract_by_day')
+  getLeaseByDay(@Body() day: string) {
+    try {
+      console.log(day + '받음 ㅋㅋ');
+      return mockLeaseUiil(30);
+    } catch (error) {
+      console.log(error + '데이터 잘못줬다 ㅋㅋ');
+    }
   }
 }

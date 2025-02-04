@@ -10,6 +10,6 @@ async function bootstrap() {
     credentials: true, // 쿠키와 같은 자격 증명 허용
   });
 
-  await app.listen(process.env.PORT ?? 8000);
+  await app.listen(process.env.PORT ?? 8080);
 }
 bootstrap();
